@@ -2,7 +2,7 @@
 
 Bienvenido a **NekoTube**, una plantilla inspirada en YouTube que permite visualizar videos, simular canales, comentarios y más. Ideal como base para un proyecto de plataforma de video personalizada.
 
-👉 **[Ver sitio en vivo](https://nachito182.github.io/Plantilla-NekoTube/)**
+👉 **[Ver sitio en vivo](https://nachito182.github.io/Plantilla-MiTube/)**
 
 ---
 
