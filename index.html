@@ -110,6 +110,17 @@
   </div>
 
   <script src="app.js"></script>
+  <script>
+    const thumbnailOverlay = document.getElementById('thumbnailOverlay');
+    const video = document.getElementById('mainVideo');
+    const playButton = document.getElementById('playButton');
+  
+    playButton.addEventListener('click', () => {
+      thumbnailOverlay.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    });
+  </script>
 
 </body>
 </html>
