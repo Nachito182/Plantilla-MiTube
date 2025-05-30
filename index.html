@@ -2,84 +2,98 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MiTube</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-    <aside class="sidebar">
-        <ul>
-          <li><i class="fas fa-home"></i> Inicio</li>
-          <li><i class="fas fa-compass"></i> Explorar</li>
-          <li><i class="fas fa-bolt"></i> Shorts</li>
-          <li><i class="fas fa-photo-video"></i> Suscripciones</li>
-          <hr />
-          <li><i class="fas fa-photo-video"></i> Tu contenido</li>
-          <li><i class="fas fa-clock"></i> Ver más tarde</li>
-        </ul>
-      </aside>
+
+  <header class="top-bar">
+    <div class="logo">
+      <img src="logo.png" alt="MiTube Logo" />
+    </div>
+
+    <form class="search-bar" role="search" aria-label="Buscar videos">
+      <input type="search" placeholder="Buscar" aria-label="Buscar videos" />
+      <button type="submit" class="search-button" aria-label="Buscar"><i class="fas fa-search"></i></button>
+    </form>
+
+    <nav class="right-icons" aria-label="Iconos principales">
+      <button aria-label="Subir video"><i class="fas fa-video"></i></button>
+      <button aria-label="Ver categorías"><i class="fas fa-th"></i></button>
+      <button aria-label="Notificaciones"><i class="fas fa-bell"></i></button>
+      <button aria-label="Perfil usuario">
+        <img src="usuario.png" alt="Icono usuario" class="user-icon" />
+      </button>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <aside class="sidebar" aria-label="Menú lateral">
+      <ul>
+        <li><i class="fas fa-home"></i> Inicio</li>
+        <li><i class="fas fa-compass"></i> Explorar</li>
+        <li><i class="fas fa-bolt"></i> Shorts</li>
+        <li><i class="fas fa-photo-video"></i> Suscripciones</li>
+        <hr />
+        <li><i class="fas fa-photo-video"></i> Tu contenido</li>
+        <li><i class="fas fa-clock"></i> Ver más tarde</li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+        <section class="video-player-layout">
       
-
-  <div class="main">
-    <header class="top-bar">
-        <div class="logo">
-          <img src="logo.png" alt="MiTube" />
-        </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Buscar" />
-          <button class="search-button"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="right-icons">
-          <i class="fas fa-video"></i>
-          <i class="fas fa-th"></i>
-          <i class="fas fa-bell"></i>
-          <img src="usuario.png" class="user-icon" />
-        </div>
-      </header>
-
-    <section id="content">
-      <div id="video-player">
-        <video id="main-video" controls></video>
-        <h2 id="video-title">Selecciona un video</h2>
-      </div>
-
-      <h3>Videos</h3>
-      <div id="video-list" class="video-grid"></div>
-
-      <label class="upload-btn">
-        Subir video
-        <input type="file" id="video-upload" accept="video/mp4" hidden />
-      </label>
+          <!-- Parte izquierda: video + info + botones -->
+          <article class="video-section">
       
-      <main class="video-feed">
-        <div class="video-card">
-          <img src="thumbnail.jpg" alt="video">
-          <h4>Título del video</h4>
-          <p>Canal • 10k vistas • hace 2 horas</p>
-        </div>
-        <div class="video-card">
-            <img src="thumbnail.jpg" alt="video">
-            <h4>Título del video</h4>
-            <p>Canal • 10k vistas • hace 2 horas</p>
-          </div>
-          <div class="video-card">
-            <img src="thumbnail.jpg" alt="video">
-            <h4>Título del video</h4>
-            <p>Canal • 10k vistas • hace 2 horas</p>
-          </div>
-          <div class="video-card">
-            <img src="thumbnail.jpg" alt="video">
-            <h4>Título del video</h4>
-            <p>Canal • 10k vistas • hace 2 horas</p>
-          </div>
+            <video id="main-video" controls poster="thumbnail.jpg" aria-label="Reproductor de video" tabindex="0">
+              <source src="" type="video/mp4" />
+              Tu navegador no soporta el reproductor de video.
+            </video>
+      
+            <h2 id="video-title">Selecciona un video</h2>
+      
+            <div class="video-actions">
+              <button aria-label="Me gusta" class="btn-action"><i class="fas fa-thumbs-up"></i> 123K</button>
+              <button aria-label="No me gusta" class="btn-action"><i class="fas fa-thumbs-down"></i></button>
+              <button aria-label="Compartir" class="btn-action"><i class="fas fa-share"></i></button>
+              <button aria-label="Guardar" class="btn-action"><i class="fas fa-save"></i></button>
+            </div>
+      
+            <section class="comments-section" aria-label="Comentarios">
+              <h3>Comentarios</h3>
+              <p>Aquí irán los comentarios del video...</p>
+            </section>
+          </article>
+      
+          <!-- Parte derecha: videos recomendados -->
+          <aside class="recommended-videos" aria-label="Videos recomendados">
+            <h3>Videos recomendados</h3>
+            <div class="video-list">
+              <!-- Ejemplos de videos recomendados -->
+              <article class="video-card" tabindex="0" role="button" aria-label="Título del video recomendado">
+                <img src="thumbnail2.jpg" alt="Miniatura del video" />
+                <h4>Video recomendado 1</h4>
+                <p>Canal • 1M vistas • hace 1 día</p>
+              </article>
+      
+              <article class="video-card" tabindex="0" role="button" aria-label="Título del video recomendado">
+                <img src="thumbnail3.jpg" alt="Miniatura del video" />
+                <h4>Video recomendado 2</h4>
+                <p>Canal • 500K vistas • hace 3 días</p>
+              </article>
+      
+              <!-- Más videos aquí -->
+            </div>
+          </aside>
+        </section>
       </main>
-      
-    </section>
   </div>
 
   <script src="app.js"></script>
+
 </body>
 </html>
-

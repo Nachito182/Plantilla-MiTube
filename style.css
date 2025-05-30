@@ -1,72 +1,132 @@
-body {
-    background-color: #0f0f0f;
-    color: white;
+/* Variables de color para mantener consistencia */
+:root {
+    --bg-main: #0f0f0f;
+    --bg-topbar: #212121;
+    --bg-sidebar: #181818;
+    --bg-card: #202020;
+    --hover-bg: #333333;
+    --text-light: #ffffff;
+    --text-muted: #aaa;
+    --bg-dark: #0f0f0f;
+    --bg-sidebar: #181818;
+    --bg-topbar: #212121;
+    --bg-card: #202020;
+    --text-light: #eee;
+    --hover-bg: #333333;
+    --accent-color: #ff0000;
+  }
+  
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-light);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
   }
   
-  .top-bar {
+  /* Top bar fijo */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-topbar);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #212121;
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
+    padding: 0 20px;
+    height: 60px;
+    z-index: 1000;
   }
   
+  /* Logo */
+  .logo img {
+    height: 40px;
+  }
+  
+  /* Search bar */
   .search-bar {
     flex: 1;
-    display: flex;
-    justify-content: center;
+    max-width: 600px;
     margin: 0 20px;
+    display: flex;
+    align-items: center;
   }
   
-  .search-bar input {
-    width: 60%;
-    padding: 8px;
-    border-radius: 20px 0 0 20px;
+  .search-bar input[type="search"] {
+    flex: 1;
+    padding: 8px 16px;
     border: none;
+    border-radius: 20px 0 0 20px;
+    font-size: 16px;
     outline: none;
+    background-color: #333;
+    color: var(--text-light);
+  }
+  
+  .search-bar input::placeholder {
+    color: #bbb;
   }
   
   .search-button {
     background-color: #303030;
     border: none;
+    padding: 9px 16px;
     border-radius: 0 20px 20px 0;
-    padding: 8px 12px;
-    color: white;
+    color: var(--text-light);
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
   }
   
-  .right-icons i, .user-icon {
-    margin-left: 20px;
+  .search-button:hover {
+    background-color: var(--hover-bg);
+  }
+  
+  /* Iconos a la derecha */
+  .right-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .right-icons button {
+    background: none;
+    border: none;
+    color: var(--text-light);
     font-size: 18px;
     cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .right-icons button:hover {
+    color: var(--accent-color);
   }
   
   .user-icon {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
-  }
+    object-fit: cover;
+  }  
   
+  /* Sidebar */
   .sidebar {
     position: fixed;
     top: 60px;
     left: 0;
     width: 200px;
-    background-color: #181818;
-    height: 100%;
+    background-color: var(--bg-sidebar);
+    height: calc(100% - 60px);
     padding-top: 20px;
+    overflow-y: auto;
   }
   
   .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
   }
   
   .sidebar li {
@@ -75,12 +135,189 @@ body {
     align-items: center;
     font-size: 14px;
     cursor: pointer;
+    color: var(--text-light);
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar li:hover,
+  .sidebar li:focus {
+    background-color: var(--hover-bg);
+    outline: none;
   }
   
   .sidebar li i {
     margin-right: 10px;
   }
-
+  
+  /* Main content - video feed or player */
+  .main-content {
+    margin-left: 220px;
+    margin-top: 70px;
+    padding: 20px;
+    height: calc(100vh - 70px);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Layout del reproductor y recomendaciones */
+  .video-player-layout {
+    display: flex;
+    gap: 24px;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  /* Video + botones + comentarios */
+  .video-section {
+    flex: 2.5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: 100%;
+    overflow-y: auto;
+  }
+  
+  /* Video grande */
+  .video-section video {
+    width: 100%;
+    border-radius: 12px;
+    background-color: black;
+    max-height: 450px;
+    outline: none;
+  }
+  
+  /* Título del video */
+  #video-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-light);
+    margin: 0;
+  }
+  
+  /* Botones de acciones */
+  .video-actions {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .btn-action {
+    background: var(--bg-sidebar);
+    border: none;
+    color: var(--text-light);
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-action i {
+    font-size: 1.2rem;
+  }
+  
+  .btn-action:hover {
+    background-color: var(--hover-bg);
+  }
+  
+  /* Sección comentarios */
+  .comments-section {
+    background-color: var(--bg-sidebar);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #ccc;
+    font-size: 0.95rem;
+    flex: 1;
+    overflow-y: auto;
+  }
+  
+  /* Recomendados */
+  .recommended-videos {
+    flex: 1;
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+  
+  /* Título recomendados */
+  .recommended-videos h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--text-light);
+  }
+  
+  /* Lista recomendados */
+  .recommended-videos .video-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  /* Videos recomendados (reusar video-card pero con tamaño más pequeño) */
+  .recommended-videos .video-card {
+    background-color: var(--bg-sidebar);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    cursor: pointer;
+    gap: 10px;
+    align-items: center;
+    padding: 8px;
+    transition: background-color 0.3s ease;
+    max-height: 80px;
+    color: var(--text-light);
+  }
+  
+  .recommended-videos .video-card:hover,
+  .recommended-videos .video-card:focus {
+    background-color: var(--hover-bg);
+    outline: none;
+  }
+  
+  .recommended-videos .video-card img {
+    width: 120px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .recommended-videos .video-card h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: var(--text-light);
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .recommended-videos .video-card p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin: 2px 0 0 0;
+    flex-shrink: 0;
+  }
+  
+  /* Scrollbars personalizados para video-section y recommended */
+  .video-section::-webkit-scrollbar,
+  .recommended-videos::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .video-section::-webkit-scrollbar-thumb,
+  .recommended-videos::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+  }
+  
+  /* Video feed grid (si usas para otras secciones) */
   .video-feed {
     margin-left: 220px;
     margin-top: 70px;
@@ -90,11 +327,46 @@ body {
     padding: 20px;
   }
   
+  /* Tarjetas de video (para la grid) */
   .video-card {
-    background-color: #202020;
+    background-color: var(--bg-card);
     border-radius: 10px;
     overflow: hidden;
     padding: 10px;
+    color: var(--text-light);
   }
   
+  /* Responsive */
+  @media (max-width: 900px) {
+    .main-content {
+      margin-left: 0;
+      margin-top: 60px;
+      height: auto;
+    }
+  
+    .video-player-layout {
+      flex-direction: column;
+    }
+  
+    .video-section {
+      max-height: none;
+    }
+  
+    .video-section video {
+      max-height: 300px;
+    }
+  
+    .recommended-videos {
+      max-height: 200px;
+      margin-top: 20px;
+      flex: none;
+    }
+  
+    .sidebar {
+      position: relative;
+      width: 100%;
+      height: auto;
+      top: 0;
+    }
+  }
   
