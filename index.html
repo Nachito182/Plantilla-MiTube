@@ -8,20 +8,35 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <div class="sidebar">
-    <img src="assets/logo.svg" alt="MiTube" class="logo" />
-    <nav>
-      <a href="#">Inicio</a>
-      <a href="#">Videos</a>
-      <a href="#">Subir</a>
-    </nav>
-  </div>
+    <aside class="sidebar">
+        <ul>
+          <li><i class="fas fa-home"></i> Inicio</li>
+          <li><i class="fas fa-compass"></i> Explorar</li>
+          <li><i class="fas fa-bolt"></i> Shorts</li>
+          <li><i class="fas fa-photo-video"></i> Suscripciones</li>
+          <hr />
+          <li><i class="fas fa-photo-video"></i> Tu contenido</li>
+          <li><i class="fas fa-clock"></i> Ver más tarde</li>
+        </ul>
+      </aside>
+      
 
   <div class="main">
-    <header>
-      <input type="text" id="search" placeholder="Buscar videos..." />
-      <button id="theme-toggle">🌓</button>
-    </header>
+    <header class="top-bar">
+        <div class="logo">
+          <img src="logo.png" alt="MiTube" />
+        </div>
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar" />
+          <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="right-icons">
+          <i class="fas fa-video"></i>
+          <i class="fas fa-th"></i>
+          <i class="fas fa-bell"></i>
+          <img src="usuario.png" class="user-icon" />
+        </div>
+      </header>
 
     <section id="content">
       <div id="video-player">
