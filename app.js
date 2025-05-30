@@ -2,6 +2,7 @@ const videoInput = document.getElementById('video-upload');
 const videoList = document.getElementById('video-list');
 const mainVideo = document.getElementById('main-video');
 const videoTitle = document.getElementById('video-title');
+const search = document.getElementById('search');
 
 let videos = [];
 
@@ -10,38 +11,30 @@ videoInput.addEventListener('change', (e) => {
   if (file) {
     const url = URL.createObjectURL(file);
     videos.push({ title: file.name, url });
-
     renderVideos();
   }
 });
 
-function renderVideos() {
+function renderVideos(filter = '') {
   videoList.innerHTML = '';
-  videos.forEach((video, index) => {
-    const thumb = document.createElement('div');
-    thumb.innerText = video.title;
-    thumb.style.cursor = 'pointer';
-    thumb.style.border = '1px solid #444';
-    thumb.style.padding = '10px';
-    thumb.style.background = '#333';
-
-    thumb.addEventListener('click', () => {
-      mainVideo.src = video.url;
-      videoTitle.textContent = video.title;
+  videos
+    .filter((v) => v.title.toLowerCase().includes(filter.toLowerCase()))
+    .forEach((video) => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerText = video.title;
+      card.onclick = () => {
+        mainVideo.src = video.url;
+        videoTitle.textContent = video.title;
+      };
+      videoList.appendChild(card);
     });
-
-    videoList.appendChild(thumb);
-  });
 }
 
-// Tema oscuro/claro
-document.getElementById('toggle-theme').onclick = () => {
-  document.body.classList.toggle('light');
-};
+search.addEventListener('input', (e) => {
+  renderVideos(e.target.value);
+});
 
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./service-worker.js').then(() => {
-      console.log('Service Worker registrado');
-    });
-  }
-  
+document.getElementById('theme-toggle').onclick = () => {
+  document.body.classList.toggle('light-theme');
+};

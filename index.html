@@ -8,22 +8,38 @@
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
-  <header>
-    <h1>MiTube</h1>
-    <button id="toggle-theme">🌓</button>
-  </header>
+  <div class="sidebar">
+    <img src="assets/logo.svg" alt="MiTube" class="logo" />
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Videos</a>
+      <a href="#">Subir</a>
+    </nav>
+  </div>
 
-  <main>
-    <section id="video-player">
-      <video id="main-video" controls></video>
-      <h2 id="video-title">Selecciona un video</h2>
+  <div class="main">
+    <header>
+      <input type="text" id="search" placeholder="Buscar videos..." />
+      <button id="theme-toggle">🌓</button>
+    </header>
+
+    <section id="content">
+      <div id="video-player">
+        <video id="main-video" controls></video>
+        <h2 id="video-title">Selecciona un video</h2>
+      </div>
+
+      <h3>Videos</h3>
+      <div id="video-list" class="video-grid"></div>
+
+      <label class="upload-btn">
+        Subir video
+        <input type="file" id="video-upload" accept="video/mp4" hidden />
+      </label>
     </section>
-
-    <section id="video-list"></section>
-
-    <input type="file" id="video-upload" accept="video/mp4" />
-  </main>
+  </div>
 
   <script src="app.js"></script>
 </body>
 </html>
+
