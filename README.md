@@ -8,8 +8,7 @@ Bienvenido a **NekoTube**, una plantilla inspirada en YouTube que permite visual
 
 ## 📸 Vista previa
 
-![Vista previa de NekoTube](/assets/1.png)  
-*Puedes reemplazar este enlace con una captura real de tu sitio en la carpeta `assets`.*
+![Vista previa de NekoTube](1.png)
 
 ---
 
