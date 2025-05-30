@@ -178,13 +178,57 @@
   }
   
   /* Video grande */
-  .video-section video {
+  .video-container {
+    position: relative;
     width: 100%;
-    border-radius: 12px;
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
     background-color: black;
-    max-height: 450px;
-    outline: none;
+    border-radius: 12px;
+    overflow: hidden;
   }
+  
+  .video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+  }
+  
+  /* Miniatura con botón */
+  .video-thumbnail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  #playButton {
+    position: absolute;
+    font-size: 64px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #playButton:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
   
   /* Título del video */
   #video-title {
@@ -194,6 +238,59 @@
     margin: 0;
   }
   
+  .channel-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    margin-top: -15px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .channel-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .channel-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .channel-subs {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: #aaa;
+  }
+  
+  .subscribe-button {
+    background-color: #cc0000;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 13px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .subscribe-button:hover {
+    background-color: #b30000;
+  }
+  
+
   /* Botones de acciones */
   .video-actions {
     display: flex;
@@ -231,6 +328,7 @@
     font-size: 0.95rem;
     flex: 1;
     overflow-y: auto;
+    min-height: 10%;
   }
   
   /* Recomendados */

@@ -49,15 +49,31 @@
           <!-- Parte izquierda: video + info + botones -->
           <article class="video-section">
       
-            <video id="main-video" controls poster="thumbnail.jpg" aria-label="Reproductor de video" tabindex="0">
-              <source src="" type="video/mp4" />
-              Tu navegador no soporta el reproductor de video.
-            </video>
+            <div class="video-container">
+                <div class="video-thumbnail" id="thumbnailOverlay">
+                  <img src="videos/miniature.jpg" alt="Miniatura del video">
+                  <button id="playButton"><i class="fas fa-play"></i></button>
+                </div>
+              
+                <video id="mainVideo" controls>
+                  <source src="videos/Weird Fishes⧸Arpeggi.mp4" type="video/mp4">
+                  Tu navegador no soporta videos HTML5.
+                </video>
+              </div>
       
-            <h2 id="video-title">Selecciona un video</h2>
-      
+            <h2 id="video-title">Radiohead - Weird Fishes / Arpeggi | From The Basement</h2>
+            <div class="channel-section">
+                <div class="channel-info">
+                  <img src="videos/logo.jpg" alt="Avatar del canal" class="channel-avatar">
+                  <div>
+                    <h3 class="channel-name">Radiohead <i class="fa fa-music" aria-hidden="true"></i></h3>
+                    <p class="channel-subs">4.43M suscriptores</p>
+                  </div>
+                </div>
+                <button class="subscribe-button">Suscribirse</button>
+              </div>
             <div class="video-actions">
-              <button aria-label="Me gusta" class="btn-action"><i class="fas fa-thumbs-up"></i> 123K</button>
+              <button aria-label="Me gusta" class="btn-action"><i class="fas fa-thumbs-up"></i> 53K</button>
               <button aria-label="No me gusta" class="btn-action"><i class="fas fa-thumbs-down"></i></button>
               <button aria-label="Compartir" class="btn-action"><i class="fas fa-share"></i></button>
               <button aria-label="Guardar" class="btn-action"><i class="fas fa-save"></i></button>
@@ -96,4 +112,16 @@
   <script src="app.js"></script>
 
 </body>
+<script>
+    const thumbnailOverlay = document.getElementById('thumbnailOverlay');
+    const video = document.getElementById('mainVideo');
+    const playButton = document.getElementById('playButton');
+  
+    playButton.addEventListener('click', () => {
+      thumbnailOverlay.style.display = 'none';
+      video.style.display = 'block';
+      video.play();
+    });
+  </script>
+  
 </html>
